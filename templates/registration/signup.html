@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% block title %}Выбор{% endblock title %}
+<body>
+    <h2>Sign up for a free account</h2>
+  <p class="lead">Select below the type of account you want to create</p>
+  <h2><a href="{% url 'student_register' %}" class="btn btn-student btn-lg" role="button">I'm a student</a></h2>
+  <h2><a href="{% url 'teacher_register' %}" class="btn btn-teacher btn-lg" role="button">I'm a teacher</a></h2>
+</body>
+{% endblock %}

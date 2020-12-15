@@ -1,0 +1,113 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>{% block title %} Main {% endblock title %}</title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="{% static 'assets/css/main.css'%}" />
+	</head>
+	<body class="homepage is-preload">
+		<div id="page-wrapper">
+
+                {% if user.is_authenticated %}
+				<section id="header" class="wrapper">
+                            {% if user.is_student %}
+                            <nav id="nav">
+                                <ul>
+                                    <li><a href="{% url 'students_tasks' %}">Задания</a></li>
+                                    <li><a href="{% url 'students_subjects' %}">Предметы и оценки</a></li>
+                                    <li><a href="{% url 'schedule' %}">Расписание</a></li>
+                                    <li><a href="{% url 'logout' %}">Выйти</a></li>
+                                </ul>
+                            </nav>
+                            {% endif %}
+                            {% if user.is_teacher %}
+                            <nav id="nav">
+                                <ul>
+                                    <li><a href="{% url 'teacher_task_create' %}">Создать задание</a></li>
+                                    <li><a href="{% url 'teacher_tasks' %}">Задания</a></li>
+                                    <li><a href="{% url 'logout' %}">Выйти</a></li>
+                                </ul>
+                            </nav>
+                            {% endif %}
+                        <header class="style1">
+
+								<p>Вы:
+
+								</p>
+                                <p>
+                                    {{ user.first_name }}
+								</p>
+                                <p>
+                                    {{ user.last_name }}
+								</p>
+                                <p>
+                                    {{ user.father_name }}
+								</p>
+                                {% if user.is_student %}
+                                    <p>
+                                        СТАТУС: СТУДЕНТ
+								    </p>
+                                {% endif %}
+                                {% if user.is_teacher %}
+                                    <p>
+                                        СТАТУС: УЧИТЕЛЬ
+                                    </p>
+                                {% endif %}
+						</header>
+
+				</section>
+
+
+
+                {% else %}
+                <section id="header" class="wrapper">
+                    <nav id="nav">
+                        <ul>
+                            <li><a href="{% url 'login' %}" class="btn btn-light" role="button">Войти</a></li>
+                            <li><a href="{% url 'new_register' %}" class="btn btn-primary" role="button">Регистрация</a></li>
+
+                        </ul>
+                    </nav>
+
+                </section>
+                {% endif %}
+
+
+                {% block content %}
+
+                            <h1> Empty content </h1>
+
+                {% endblock content %}
+				<section id="footer" class="wrapper">
+					<div class="container">
+						<header class="style1">
+
+								<p>
+                                    ZNANIJA.KG<br />
+									Платформа для онлайн обучения
+
+								</p>
+						</header>
+
+						<div id="copyright">
+							<ul>
+								<li>&copy; Untitled.</li><li >Design: RSKELDI</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+		</div>
+
+			<script src="{% static 'assets/js/jquery.min.js'%}"></script>
+			<script src="{% static 'assets/js/jquery.dropotron.min.js'%}"></script>
+			<script src="{% static 'assets/js/browser.min.js'%}"></script>
+			<script src="{% static 'assets/js/breakpoints.min.js'%}"></script>
+			<script src="{% static 'assets/js/util.js'%}"></script>
+			<script src="{% static 'ts/js/main.js'%}"></script>
+
+	</body>
+</html>

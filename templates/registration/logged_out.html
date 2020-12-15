@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logout</title>
+</head>
+<body>
+    <span>До свидания!</span>
+    <h1><a href="{% url 'login' %}">Войти обратно</a></h1>
+</body>
+</html>
+{% endblock %}

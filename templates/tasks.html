@@ -1,0 +1,23 @@
+<li><a href="{% url 'students_tasks' %}">Задания</a></li>
+<li><a href="{% url 'students_subjects' %}">Предметы и оценки</a></li>
+<li><a href="{% url 'schedule' %}">Расписание</a></li>
+<li><a href="{% url 'logout' %}">Выйти</a></li>
+<body>
+    <form action="" method="get">
+        {{ form.as_p }}
+        <input type="submit" value="Поиск">
+    </form>
+
+    <h1 class="mb-5">Posts:</h1>
+    {% for task in tasks %}
+        <h1><a href="{% url 'student_task_detail' pk=task.pk %}">{{ task }}</a></h1>
+        <h2>предмет: {{ task.subject }}</h2>
+        <h2>{{ task.description }}</h2>
+        {% if task.done %}
+            <h3>Выполнено</h3>
+        {% else %}
+            <h3>Не выполнено</h3>
+        {% endif %}
+    {% endfor %}
+</body>
+

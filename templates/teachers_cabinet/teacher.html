@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+
+    {% block title %}Создать задание{% endblock title %}
+</head>
+<body>
+    <form method="POST" novalidate>
+        {% csrf_token %}
+        <h1>Task Create</h1>
+        <h1>{{ form|crispy }}</h1>
+        <button type="submit" class="btn btn-success">Добавить</button>
+    </form>
+</body>
+{% endblock %}

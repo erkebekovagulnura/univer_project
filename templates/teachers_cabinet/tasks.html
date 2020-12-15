@@ -1,0 +1,30 @@
+<li><a href="{% url 'teacher_task_create' %}">Создать задание</a></li>
+<li><a href="{% url 'teacher_tasks' %}">Задания</a></li>
+<li><a href="{% url 'logout' %}">Выйти</a></li>
+<body>
+    <form action="" method="get">
+        <h3 >{{ form }}</h3>
+        <input type="submit" value="Поиск">
+    </form>
+    {% for task in tasks %}
+        <h1>{{ task }}</h1>
+        {% if task.done %}
+            <h3><span>Выпонил: </span>{{ task.student }}</h3>
+            {% if task.verified %}
+            <h2><span>статус: </span>Проверено </h2>
+            {% else %}
+            <h2><span>статус: </span>Не проверено </h2>
+            {% endif %}
+            {% if task.verified %}
+            <h3><a href="{% url 'not_verified' pk=task.pk%}"> Отменить проверку </a></h3>
+            {% else %}
+            <h3><a href="{% url 'verified' pk=task.pk%}"> Проверить </a></h3>
+        {% endif %}
+        {% else %}
+            <h3><span>Пока не выполнил: </span>{{ task.student }}</h3>
+        {% endif %}
+
+
+    {% endfor %}
+</body>
+

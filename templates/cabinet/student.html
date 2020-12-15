@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<body>
+    <h1><a href="{% url 'students_tasks' %}">Мои Задания</a></h1>
+    <h1><a href="{% url 'students_subjects' %}">Мои предметы и оценки</a></h1>
+</body>
+
+{% endblock %}
